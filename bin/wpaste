@@ -1,0 +1,4 @@
+#!/bin/bash
+
+# Fix CR
+wclip.exe -o | sed -e 's/\r//g'

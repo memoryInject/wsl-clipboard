@@ -11,6 +11,7 @@ Build using Microsoft Visual Studio Community
 - Support Unicode characters
 - Additional shell script for WSL for removing CR end of a line
 - Support Neovim 
+- Support Tmux 
 
 
 ## Installation
@@ -87,7 +88,7 @@ Hello World! 😎
 Hello
 ```
 
-The main reason these sctipts exists is, it is easy to use with Neovim when we use system clipboard.
+The main reason these sctipts exists is, it is easy to use with Neovim and Tmux when we use system clipboard.
 
 ### Neovim integration
 If you are running Neovim under WSL and want to use system clipboard, add the lua script into your configuration:
@@ -122,6 +123,14 @@ if is_wsl() then
   }
 end
 
+```
+
+### Tmux integration
+If you are running Tmux under WSL and want to use system clipboard for vi style yank, add the script into tmux configuration:
+```tmux
+# Vim like selection and copy text
+bind -T copy-mode-vi v send-keys -X begin-selection
+bind -T copy-mode-vi y send-keys -X copy-pipe-and-cancel 'wcopy'
 ```
 ## Screenshots
 
